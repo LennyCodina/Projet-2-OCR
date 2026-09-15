@@ -1,10 +1,10 @@
 import {type FC} from 'react'
 import {ChartMedal} from '../components/ChartMedal'
 import {HomeHeader} from '../components/HomeHeader'
-import {useOlympics} from '../hooks/useOlympics'
+import {useData} from '../hooks/useData'
 
 export const Home: FC = () => {
-  const {data,loading} = useOlympics()
+  const {data,loading} = useData()
   const totalParticipatingCountries = data.length
   const totalGamesEditions = 5
 

@@ -2,11 +2,17 @@ import {type FC} from 'react'
 import {useParams} from 'react-router-dom'
 import {ChartEvolution} from '../components/ChartEvolution'
 import {Indicator} from '../components/Indicator'
-import {useCountry} from '../hooks/useCountry'
+import {useData} from '../hooks/useData'
 
 export const Country: FC = () => {
   const {id} = useParams()
-  const country = useCountry(id ?? 'false')
+  const {data, loading} = useData()
+    
+  const country = data.find((c) => c.id === Number(id))
+
+  if (loading) {
+    return <div>Chargement...</div>
+  }
 
   if (!country) {
     return <div>Country not found</div>

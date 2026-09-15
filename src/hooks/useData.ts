@@ -1,6 +1,7 @@
-import type {Country} from '../models/Country.ts'
+import {useEffect,useState} from "react";
+import type { Country } from "../models/Country";
 
-export const olympicsData: Country[] = [
+export const Datas: Country[] = [
   {
     id: 1,
     name: "États-Unis",
@@ -111,3 +112,16 @@ export const olympicsData: Country[] = [
     ],
   },
 ];
+
+
+export const useData = () => {
+  const [data,setData] = useState<Country[]>([]);
+  const [loading,setLoading] = useState(true);
+
+  useEffect(() => {
+    setData(Datas)
+    setLoading(false)
+  }, [])
+
+  return {data,loading}
+}
