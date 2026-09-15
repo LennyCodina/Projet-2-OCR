@@ -1,46 +1,38 @@
-## Problèmes identifiés
+## Problemes identifies
 
-**Données codées en dur**
+**Donnees codees en dur**
 
-  * Les données ne proviennent pas d’une API.
-  * Elles sont directement écrites dans le fichier.
-  * Elles ne sont donc pas réellement dynamiques.
+  * Les donnees ne proviennent pas encore d'une API.
+  * Elles sont maintenant separees dans un fichier `data`.
+  * Elles pourront etre remplacees plus tard par un vrai appel API.
 
-**Mauvaise séparation des composants**
+**Mauvaise separation des composants**
 
-  * Une grande partie du site est regroupée dans un seul fichier.
-  * Plusieurs responsabilités sont mélangées au même endroit.
-  * Il serait préférable de séparer les différentes pages et les composants réutilisables.
+  * Le composant principal contenait plusieurs responsabilites.
+  * Les pages et les composants reutilisables sont maintenant separes.
+  * Les composants dumb affichent seulement les informations qu'ils recoivent.
 
 **Utilisation artificielle de `useEffect`**
 
-  * Le `useEffect` ne récupère aucune donnée distante.
-  * Il utilise simplement un `setTimeout` pour simuler un délai réseau.
-  * Ce délai est donc artificiel et n’apporte rien dans le fonctionnement réel de l’application.
+  * Le `setTimeout` a ete retire.
+  * La recuperation des donnees est centralisee dans un custom hook.
 
-**Composant inutilisé**
+**Code peu homogene**
 
-  * Un composant correspondant à une autre page est déjà présent dans le fichier.
-  * Cependant, celui-ci n’est pas réellement utilisé ou accessible dans le routing actuel.
+  * Les models permettent de typer les objets principaux.
+  * Les `any` ont ete retires du code refactorise.
+  * Les imports ont ete mis a jour apres le decoupage.
 
-**Code peu homogène**
-
-  * Certaines données codées en dur ne suivent pas exactement le même style de formatage.
-  * L’indentation et la présentation de certains objets sont irrégulières.
-
-**Code de debug encore présent**
-
-  * Plusieurs `console.log()` sont encore présents.
-  * Ils devraient être retirés dans une version propre ou destinée à la production.
-
-## Nouvelle architechture proposée
+## Nouvelle architecture
 
 ```
 src/
 ├── App.tsx
-├── Main.tsx
+├── main.tsx
+├── index.css
 │
 ├── components/
+│   ├── HomeHeader.tsx
 │   ├── Indicator.tsx
 │   ├── ChartMedal.tsx
 │   └── ChartEvolution.tsx
@@ -50,8 +42,8 @@ src/
 │   └── Country.tsx
 │
 ├── hooks/
-│   ├── useCountry.ts
-│   └── useParticitaption.ts
+│   ├── useOlympics.ts
+│   └── useCountry.ts
 │
 ├── data/
 │   └── olympicsData.ts
@@ -61,10 +53,11 @@ src/
     └── Participation.ts
 ```
 
-**Raisonnement**
-* Les routes sont dans le fichier ``App``
-* Les composants UI vont dans `components`
-* Les compositions des pages dans `pages`
-* La récupération et organisation des données dans `hooks`
-* `data` contiens les données en dur mais plus tard il y aura un fichier de récupération API
-* Les objets utilisés ont leurs models dans `models`
+## Raisonnement
+
+* `App.tsx` gere le routing.
+* Les pages sont dans `pages`.
+* Les composants reutilisables sont dans `components`.
+* Les hooks gerent l'acces aux donnees.
+* Les donnees temporaires sont dans `data`.
+* Les types des objets sont dans `models`.
