@@ -1,10 +1,12 @@
-import {Chart as ChartJS,ArcElement,Tooltip,Legend} from 'chart.js'
+import {Chart as ChartJS,ArcElement,Tooltip,Legend, type ActiveElement, type ChartEvent} from 'chart.js'
 import {Pie} from 'react-chartjs-2'
 import type {Country} from '../models/Country'
+import { useNavigate } from 'react-router-dom'
 
 ChartJS.register(ArcElement,Tooltip,Legend)
 
 export const ChartMedal = ({data}: { data: Country[] }) => {
+  const navigate = useNavigate()
   const calculateTotalMedals = (country: Country) => {
     return country.participations.reduce((sum,participation) => sum + participation.medalsCount,0)
   }
@@ -35,6 +37,12 @@ export const ChartMedal = ({data}: { data: Country[] }) => {
   }
 
   const chartOptions = {
+    onClick: (_event: ChartEvent, elements: ActiveElement[]) => {
+      if (elements.length > 0) {
+        const index = elements[0].index + 1;
+        navigate(`/country/${index}`);
+      }
+    },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -48,8 +56,8 @@ export const ChartMedal = ({data}: { data: Country[] }) => {
   }
 
   return(
-    <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
-      <div style={{height: '400px'}}>
+    <div className="bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-xl">
+      <div className="h-72 sm:h-80 md:h-[400px]">
         <Pie data={chartData} options={chartOptions} />
       </div>
     </div>

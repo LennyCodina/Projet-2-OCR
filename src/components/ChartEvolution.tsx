@@ -13,7 +13,21 @@ export const ChartEvolution = ({country}: {country: Country}) => {
         data: country.participations.map((p) => p.medalsCount),
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        tension: 0.3,
+        tension: 0,
+      },
+      {
+        label: 'Nombre de participants',
+        data: country.participations.map((p) => p.athleteCount),
+        borderColor: 'rgb(190, 192, 75)',
+        backgroundColor: 'rgba(190, 192, 75, 0.2)',
+        tension: 0,
+      },
+      {
+        label: 'médaille par participant (x1500)',
+        data: country.participations.map((p) => (p.medalsCount / p.athleteCount) * 1500),
+        borderColor: 'rgb(192, 75, 186)',
+        backgroundColor: 'rgba(192, 75, 186, 0.2)',
+        tension: 0,
       },
     ],
   }
@@ -50,8 +64,8 @@ export const ChartEvolution = ({country}: {country: Country}) => {
   }
 
   return(
-    <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
-      <div style={{height: '400px'}}>
+    <div className="bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-xl">
+      <div className="h-72 sm:h-80 md:h-[400px]">
         <Line data={evolutionData} options={evolutionOptions} />
       </div>
     </div>
