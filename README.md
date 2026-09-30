@@ -109,6 +109,21 @@ For more information on the technologies used:
 - [React Router Documentation](https://reactrouter.com)
 - [Chart.js Documentation](https://www.chartjs.org/docs/latest/)
 
+## some pictures of the App
+
+- main page :
+
+![Page d’accueil](./documents/Capture%20d'écran%202026-09-30%20181852.png)
+
+- detail page per country :
+
+![page](./documents/Capture%20d'écran%202026-09-30%20181858.png)
+
+- Error 404 not found page :
+
+![page](./documents/Capture%20d'écran%202026-09-30%20181916.png)
+
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
