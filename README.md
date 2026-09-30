@@ -109,8 +109,9 @@ For more information on the technologies used:
 - [React Router Documentation](https://reactrouter.com)
 - [Chart.js Documentation](https://www.chartjs.org/docs/latest/)
 
-## some pictures of the App
+## Some pictures of the App
 
+### In PC view
 - main page :
 
 ![Page d’accueil](./documents/Capture%20d'écran%202026-09-30%20181852.png)
@@ -123,6 +124,25 @@ For more information on the technologies used:
 
 ![page](./documents/Capture%20d'écran%202026-09-30%20181916.png)
 
+### In phone view
+
+- main page :
+
+![Page d’accueil](./documents/Capture%20d'écran%202026-09-30%20182919.png)
+
+- detail page per country :
+
+![page](./documents/Capture%20d'écran%202026-09-30%20182924.png)
+
+### In tablet view
+
+- main page :
+
+![Page d’accueil](./documents/Capture%20d'écran%202026-09-30%20182947.png)
+
+- detail page per country :
+
+![page](./documents/Capture%20d'écran%202026-09-30%20183001.png)
 
 ## 🤝 Contributing
 
